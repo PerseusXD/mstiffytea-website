@@ -1,0 +1,914 @@
+<title>Tiffany Tran Portfolio</title>
+<meta name="description" content="Tiffany Tran: product, marketing and storytelling. NYU Leadership & Business Management (marketing concentration), December 2026. Co-founder and CMO of Micro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: sticky tab bar over one scroll. Hero (italic serif headline + taped polaroid), proof strip,
+   a filterable grid of project folders that open into full case studies, a Content section with the reel,
+   a center-line Experience timeline, About, and Connect.
+   Signature color: soft robin's-egg teal. Ornaments: washi tape, pin tags, folder tabs. */
+:root{
+  --paper:#F9FBFB;
+  --surface:#FFFFFF;
+  --mist:#E6F3F1;
+  --robin:#8CCFC6;
+  --teal:#1C716B;
+  --ink:#152629;
+  --muted:#556A6C;
+  --line:#D6E6E3;
+  --blush:#E9896A;
+  --tape:rgba(140,207,198,.72);
+  --deep:#123A3A;
+  --on-deep:#EEF7F5;
+  --shadow:0 1px 2px rgba(21,38,41,.06),0 10px 28px rgba(21,38,41,.09);
+  --f-script:"Parisienne","Segoe Script","Brush Script MT",cursive;
+  --f-display:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --f-body:"Figtree","Helvetica Neue",Arial,sans-serif;
+  --step-0:clamp(1rem,.97rem + .15vw,1.06rem);
+  --step-1:clamp(1.15rem,1.08rem + .4vw,1.36rem);
+  --step-2:clamp(1.7rem,1.4rem + 1.2vw,2.4rem);
+  --step-3:clamp(2.4rem,1.8rem + 2.8vw,4.2rem);
+  --wrap:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1A1C; --surface:#15262A; --mist:#183538; --robin:#7FC9BF; --teal:#8FD9CF; --ink:#E9F4F2; --muted:#9FB4B3; --line:#24393C;
+    --blush:#F0A084; --tape:rgba(127,201,191,.5); --deep:#0A2427; --on-deep:#E9F4F2;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.38); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1A1C; --surface:#15262A; --mist:#183538; --robin:#7FC9BF; --teal:#8FD9CF; --ink:#E9F4F2; --muted:#9FB4B3; --line:#24393C;
+  --blush:#F0A084; --tape:rgba(127,201,191,.5); --deep:#0A2427; --on-deep:#E9F4F2;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.38); color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+a{color:inherit}
+img,video{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.label{font-family:var(--f-body);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+h2{font-family:var(--f-display);font-style:italic;font-weight:600;font-size:var(--step-3);line-height:1;letter-spacing:-.01em}
+h3{font-family:var(--f-display);font-weight:700;font-size:var(--step-2);line-height:1.08}
+p{margin:0}
+
+/* tabs */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;align-items:center;gap:16px;padding-block:10px}
+.sig{font-family:var(--f-script);font-size:2rem;line-height:1;text-decoration:none;color:var(--teal);white-space:nowrap;padding-top:4px}
+.tablist{display:flex;gap:4px;margin:0 0 0 auto;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none;min-width:0}
+.tablist::-webkit-scrollbar{display:none}
+.tablist a{display:block;white-space:nowrap;text-decoration:none;font-size:.9rem;font-weight:500;color:var(--muted);padding:7px 14px;border-radius:999px;transition:background .2s,color .2s}
+.tablist a:hover{color:var(--ink);background:var(--mist)}
+.tablist a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+@media (max-width:760px){
+  .tabs .wrap{flex-wrap:wrap;gap:6px 12px;padding-block:8px}
+  .tabs .resume{margin-left:auto}
+  .tablist{order:3;flex-basis:100%;margin:0;padding-bottom:2px}
+  .tablist a{padding:6px 12px;font-size:.86rem}
+}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.94rem;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;font-family:var(--f-body);transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--teal);border-color:var(--teal);color:var(--paper)}
+.btn.solid:hover{filter:brightness(1.08)}
+.btn.small{padding:6px 14px;font-size:.85rem}
+
+/* hero */
+.hero{padding-block:clamp(44px,7vw,96px) clamp(48px,7vw,88px);background:radial-gradient(120% 90% at 85% 10%,var(--mist) 0%,transparent 60%)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(36px,6vw,88px);align-items:center}
+.hero h1{font-family:var(--f-display);font-style:italic;font-weight:700;font-size:clamp(2.9rem,1.8rem + 4.8vw,6.2rem);line-height:.95;letter-spacing:-.015em}
+.hero h1 .u{background:linear-gradient(transparent 70%,color-mix(in srgb,var(--robin) 55%,transparent) 70%);padding-inline:.04em}
+.pillars{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.pin{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px 5px 10px;border-radius:999px;border:1.5px solid currentColor;background:var(--surface)}
+.pin svg{width:12px;height:12px;flex:none}
+.pin.c1{color:var(--teal)} .pin.c2{color:var(--blush)} .pin.c3{color:var(--ink)}
+.hero .lede{margin-top:24px;max-width:58ch;font-size:var(--step-1);line-height:1.55;color:var(--muted)}
+.hero .lede strong{color:var(--ink);font-weight:600}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.portrait{position:relative;justify-self:center;width:min(100%,360px);padding:12px 12px 60px;background:var(--surface);box-shadow:var(--shadow);transform:rotate(2.2deg);margin:0}
+.portrait img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:top;background:var(--mist)}
+.portrait figcaption{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--f-script);font-size:2.2rem;color:var(--teal);line-height:1}
+.tape{position:absolute;width:104px;height:28px;background:var(--tape);z-index:2}
+.tape::before,.tape::after{content:"";position:absolute;top:0;bottom:0;width:6px;background:repeating-linear-gradient(180deg,transparent 0 3px,var(--paper) 3px 5px);opacity:.55}
+.tape::before{left:-3px}.tape::after{right:-3px}
+.tape.tl{top:-12px;left:-26px;transform:rotate(-34deg)}
+.tape.br{bottom:-10px;right:-24px;transform:rotate(-30deg)}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.portrait{order:-1;width:min(74%,280px)}}
+
+/* proof */
+.proof{border-block:1px solid var(--line);background:var(--surface)}
+.proof .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.proof div{padding:28px clamp(16px,2.4vw,28px);border-left:1px solid var(--line);min-width:0}
+.proof div:first-child{border-left:0}
+.proof b{display:block;font-family:var(--f-display);font-weight:700;font-size:clamp(2.2rem,1.6rem + 1.8vw,3.2rem);line-height:.9;color:var(--teal);font-variant-numeric:lining-nums tabular-nums}
+.proof span{display:block;margin-top:8px;font-size:.9rem;color:var(--muted);line-height:1.4}
+@media (max-width:820px){.proof .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.proof div:nth-child(3){border-left:0}.proof div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* sections */
+section.block{padding-block:clamp(64px,9vw,120px)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px 40px;margin-bottom:clamp(32px,5vw,56px)}
+.kicker{font-family:var(--f-script);font-size:clamp(1.9rem,1.5rem + 1vw,2.6rem);color:var(--teal);line-height:1;display:block;margin-bottom:6px}
+.sec-head p{max-width:50ch;color:var(--muted);margin-top:14px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--f-body);font-weight:600;font-size:.84rem;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--teal);color:var(--paper);border-color:var(--teal)}
+.chip:hover{border-color:var(--teal)}
+
+/* folders */
+.folders{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px clamp(16px,2.4vw,28px);padding-top:20px}
+@media (max-width:960px){.folders{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.folders{grid-template-columns:1fr}}
+.folder{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:0 14px 14px 14px;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;min-width:0}
+.folder:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(21,38,41,.06),0 18px 36px rgba(21,38,41,.12)}
+.folder:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
+@media (prefers-reduced-motion: reduce){.folder{transition:none}.folder:hover{transform:none}}
+.folder .tab{position:absolute;left:-1px;top:-26px;height:27px;padding:0 16px;display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-bottom:0;border-radius:10px 12px 0 0;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.folder .tab::after{content:"";position:absolute;right:-14px;bottom:0;width:14px;height:14px;background:radial-gradient(circle at 100% 0,transparent 13px,var(--surface) 13.5px);}
+.folder .cover{aspect-ratio:16/10;overflow:hidden;background:var(--mist);border-radius:0 13px 0 0;border-bottom:1px solid var(--line)}
+.folder .cover img{width:100%;height:100%;object-fit:cover;object-position:top}
+.folder .cover.num{display:grid;place-items:center;text-align:center;padding:20px}
+.folder .cover.num b{font-family:var(--f-display);font-style:italic;font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.05;color:var(--teal)}
+.folder .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.folder h3{font-size:1.5rem;line-height:1.12}
+.folder p{font-size:.94rem;color:var(--muted);line-height:1.5}
+.folder .foot{margin-top:auto;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.keystat{font-size:.8rem;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--mist);color:var(--teal)}
+.open{font-size:.86rem;font-weight:600;color:var(--ink)}
+.folder:hover .open{color:var(--teal)}
+.award-mini{position:absolute;right:12px;top:12px;z-index:1;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:.72rem;font-weight:600}
+.award-mini svg{width:12px;height:12px}
+.empty{grid-column:1/-1;color:var(--muted)}
+[data-cat][hidden]{display:none!important}
+
+/* project dialog */
+dialog.proj{width:min(1080px,100vw - 24px);max-height:calc(100dvh - 24px);border:0;border-radius:18px;padding:0;background:var(--paper);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:auto;overscroll-behavior:contain}
+dialog.proj::backdrop{background:rgba(8,20,22,.6);backdrop-filter:blur(3px)}
+.proj-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(16px,3vw,28px);background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.proj-bar .crumb{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.proj-nav{display:flex;gap:8px;flex:none}
+.iconbtn{font:600 .84rem var(--f-body);border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer}
+.iconbtn:hover{border-color:var(--teal)}
+.proj-body{padding:clamp(20px,4vw,44px) clamp(16px,3vw,44px) clamp(28px,4vw,48px)}
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,56px)}
+@media (max-width:860px){.case{grid-template-columns:1fr}}
+.case-text{min-width:0}
+.case .meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:14px}
+.case h3{margin-bottom:12px}
+.case .summary{font-size:var(--step-1);line-height:1.5;color:var(--muted);margin-bottom:22px}
+.parts{display:grid;gap:18px;margin:0}
+.parts dt{margin-bottom:4px}
+.parts dd{margin:0;max-width:62ch}
+.parts dd ul{margin:6px 0 0;padding-left:1.1em}
+.parts dd li{margin-bottom:5px}
+.parts dd li::marker{color:var(--robin)}
+.result{background:var(--mist);border-radius:10px;padding:16px 18px;border:1px solid color-mix(in srgb,var(--robin) 45%,transparent)}
+.result dt{color:var(--teal)}
+.award{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:6px 14px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:.84rem;font-weight:600}
+.award svg{width:14px;height:14px}
+.cats{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.tag{font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--mist);color:var(--teal)}
+.case-media{min-width:0;display:grid;gap:14px;align-content:start}
+.zoom{all:unset;box-sizing:border-box;cursor:zoom-in;display:block;position:relative;border-radius:8px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+.zoom:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.zoom img{width:100%;height:100%;object-fit:cover}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.phones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}
+.phones .zoom{border-radius:18px;border:5px solid var(--ink)}
+.phones .zoom:nth-child(even){margin-top:28px}
+@media (max-width:560px){.phones{grid-template-columns:repeat(2,minmax(0,1fr))}.phones .zoom:nth-child(even){margin-top:20px}}
+.tall{max-height:620px}
+.tall img{object-position:top}
+.personas{display:grid;gap:12px}
+.persona{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:start}
+.persona .pct{grid-row:span 3;font-family:var(--f-display);font-weight:700;font-size:2.8rem;line-height:.9;color:var(--teal);font-variant-numeric:lining-nums tabular-nums;min-width:2.6ch}
+.persona .pct small{display:block;font-family:var(--f-body);font-size:.66rem;font-weight:600;color:var(--muted);letter-spacing:.06em;margin-top:6px;line-height:1.3;max-width:9ch;text-transform:uppercase}
+.persona h4{font-family:var(--f-display);font-size:1.35rem;font-weight:700;line-height:1.15}
+.persona p{font-size:.93rem;color:var(--muted);line-height:1.5}
+.persona p b{color:var(--ink);font-weight:600}
+.proj-foot{display:flex;justify-content:space-between;gap:12px;margin-top:clamp(28px,4vw,44px);padding-top:20px;border-top:1px solid var(--line)}
+.proj-foot button{max-width:48%;text-align:left}
+.proj-foot button:last-child{text-align:right;margin-left:auto}
+.proj-foot small{display:block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* content */
+.content-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:900px){.content-grid{grid-template-columns:1fr}}
+.feature-video{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:14px;align-items:stretch}
+.vid{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:9/16;background:var(--ink);box-shadow:var(--shadow)}
+.vid video{width:100%;height:100%;object-fit:cover}
+.vid .vcap{position:absolute;left:12px;top:12px;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.sound{position:absolute;right:10px;bottom:10px;border:0;border-radius:999px;padding:8px 14px;background:rgba(255,255,255,.94);color:#152629;font:600 .82rem var(--f-body);cursor:pointer}
+.stats{display:grid;gap:12px;align-content:center}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.stat b{display:block;font-family:var(--f-display);font-weight:700;font-size:clamp(2rem,1.6rem + 1.2vw,2.6rem);line-height:1;color:var(--teal);font-variant-numeric:lining-nums tabular-nums}
+.stat span{font-size:.88rem;color:var(--muted);line-height:1.4;display:block;margin-top:4px}
+.reels-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:clamp(36px,5vw,56px) 0 14px}
+.reels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.reel{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:9/16;background:var(--ink)}
+.reel video{width:100%;height:100%;object-fit:cover}
+.reel span{position:absolute;left:8px;bottom:8px;right:8px;font-size:.7rem;font-weight:600;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.7);line-height:1.3}
+@media (max-width:600px){.reels{grid-template-columns:repeat(3,minmax(0,1fr))}.reel:nth-child(n+4){display:none}
+  .feature-video{grid-template-columns:1fr}.vid{width:min(100%,320px);justify-self:center}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.stat{padding:12px}.stat b{font-size:1.5rem}.stat span{font-size:.76rem}}
+.mini-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+/* experience timeline */
+.exp{background:var(--surface);border-block:1px solid var(--line)}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--robin),color-mix(in srgb,var(--robin) 30%,transparent));transform:translateX(-1px)}
+.tl li{position:relative;width:50%;padding:0 44px 40px 0}
+.tl li:nth-child(even){margin-left:50%;padding:0 0 40px 44px}
+.tl li::before{content:"";position:absolute;top:22px;right:-8px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--teal);z-index:1}
+.tl li:nth-child(even)::before{right:auto;left:-6px}
+.tl li.lead::before{background:var(--teal)}
+.tl .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.tl .when{display:inline-block;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.tl h4{font-family:var(--f-display);font-weight:700;font-size:1.4rem;line-height:1.15}
+.tl .org{font-size:.92rem;color:var(--muted);margin-top:2px}
+.tl p{font-size:.95rem;color:var(--muted);margin-top:8px}
+.tl .pin{margin-top:12px}
+.tl li:nth-child(odd) .card{text-align:right}
+.tl li:nth-child(odd) .pin{flex-direction:row}
+@media (max-width:760px){
+  .tl::before{left:7px}
+  .tl li,.tl li:nth-child(even){width:auto;margin-left:0;padding:0 0 28px 34px}
+  .tl li::before,.tl li:nth-child(even)::before{left:0;right:auto}
+  .tl li:nth-child(odd) .card{text-align:left}
+}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px)}
+.about .prose p{margin-bottom:16px;max-width:60ch}
+.about .prose .first{font-family:var(--f-display);font-style:italic;font-weight:600;font-size:clamp(1.6rem,1.3rem + 1vw,2.2rem);line-height:1.2;color:var(--ink)}
+.skills{display:grid;gap:22px;align-content:start}
+.skills h4{margin-bottom:8px}
+.skills ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.skills li{font-size:.88rem;padding:5px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+@media (max-width:820px){.about .wrap{grid-template-columns:1fr}}
+
+/* connect */
+.contact{background:var(--deep);color:var(--on-deep)}
+.contact .wrap{padding-block:clamp(64px,9vw,112px)}
+.contact .kicker{color:var(--robin)}
+.contact h2{color:var(--on-deep);max-width:16ch}
+.contact p.sub{margin-top:18px;color:color-mix(in srgb,var(--on-deep) 72%,var(--deep));max-width:52ch}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:34px}
+.email{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:clamp(.98rem,.85rem + .5vw,1.2rem);font-weight:500;padding:10px 10px 10px 20px;border:1.5px solid color-mix(in srgb,var(--on-deep) 35%,var(--deep));border-radius:999px;max-width:100%}
+.email span{overflow-wrap:anywhere;user-select:all}
+.copy{font:600 .8rem var(--f-body);padding:7px 14px;border-radius:999px;border:0;background:var(--robin);color:#0E2A2A;cursor:pointer}
+.contact .btn{border-color:color-mix(in srgb,var(--on-deep) 35%,var(--deep));color:var(--on-deep)}
+.contact .btn:hover{background:var(--on-deep);color:var(--deep)}
+footer{background:var(--deep);color:color-mix(in srgb,var(--on-deep) 55%,var(--deep));border-top:1px solid color-mix(in srgb,var(--on-deep) 14%,var(--deep))}
+footer .wrap{padding-block:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.84rem}
+
+/* lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1100px);max-height:92vh;color:#fff}
+dialog.lb::backdrop{background:rgba(8,20,22,.9)}
+dialog.lb img{max-height:84vh;width:auto;margin-inline:auto;border-radius:6px}
+dialog.lb p{font-size:.85rem;text-align:center;margin-top:10px;color:#ddd}
+dialog.lb button{position:fixed;top:14px;right:14px;font:600 .85rem var(--f-body);background:#fff;color:#111;border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+.src{display:none}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2Z"/></symbol>
+</svg>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <a class="sig" href="#top">Tiffany Tran</a>
+    <ul class="tablist">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#content">Content</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <a class="btn small resume" href="Tiffany_Tran_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Where curiosity meets <span class="u">strategy.</span></h1>
+      <div class="pillars">
+        <span class="pin c1"><svg><use href="#pin"/></svg>Product</span>
+        <span class="pin c2"><svg><use href="#pin"/></svg>Marketing</span>
+        <span class="pin c3"><svg><use href="#pin"/></svg>Storytelling</span>
+      </div>
+      <p class="lede">I'm finishing my B.S. in Leadership &amp; Business Management with a marketing concentration at <strong>NYU</strong>, graduating December 2026. For the past two years I've run listing launches for a luxury real estate agent and made short-form content that reached 24,000+ people, and I'm co-founder and CMO of Micro, an AI productivity app. Before marketing, I spent nine years in veterinary medicine, where I learned to prioritize fast, stay calm under pressure, and lead a team.</p>
+      <div class="ctas">
+        <a class="btn solid" href="#projects">See my projects</a>
+        <a class="btn" href="Tiffany_Tran_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="btn" href="https://www.linkedin.com/in/tiffany-tran2015/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <span class="tape tl" aria-hidden="true"></span>
+      <span class="tape br" aria-hidden="true"></span>
+      <img src="assets/tiffany.jpg" alt="Tiffany Tran smiling, wearing a light blue blazer" width="720" height="960">
+      <figcaption>Tiffany Tran</figcaption>
+    </figure>
+  </div>
+</header>
+
+<div class="proof" aria-label="Highlights">
+  <div class="wrap">
+    <div><b>24K</b><span>views on one reel, 95% from people who didn't follow me</span></div>
+    <div><b>$20K</b><span>revenue and 500+ users in six months at BreadSync, where I advised on UX</span></div>
+    <div><b>$10.7M</b><span>in closed home sales I coordinated from contract to closing</span></div>
+    <div><b>9 yrs</b><span>in fast-paced veterinary care, including training 30 coworkers</span></div>
+  </div>
+</div>
+
+<main>
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">selected work</span>
+        <h2>Projects</h2>
+        <p>Launches, client work and class projects. Open a folder to see the question, what I did, and what came of it.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="marketing" aria-pressed="false">Marketing</button>
+        <button class="chip" type="button" data-filter="product" aria-pressed="false">Product</button>
+        <button class="chip" type="button" data-filter="data" aria-pressed="false">Data &amp; finance</button>
+      </div>
+    </div>
+
+    <div class="folders">
+      <button class="folder" type="button" data-open="micro" data-cat="product marketing">
+        <span class="tab">Startup</span>
+        <span class="cover"><img src="assets/micro-home.jpg" alt="" loading="lazy" style="object-position:center 30%"></span>
+        <span class="body"><span class="label">Co-founder &amp; CMO · 2026</span><h3>Micro</h3><p>Marketing an AI productivity app before launch, shaped by user interviews.</p><span class="foot"><span class="keystat">30 waitlist signups</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="compass" data-cat="marketing">
+        <span class="tab">Client work</span>
+        <span class="cover"><img src="assets/compass-brokers.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">Compass · 2024 – present</span><h3>Listing launch to closing</h3><p>Launch campaigns and the full contract timeline for a luxury REALTOR®.</p><span class="foot"><span class="keystat">$10.7M closed</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="airbnb" data-cat="data">
+        <span class="tab">Finance</span>
+        <span class="award-mini"><svg><use href="#star"/></svg>Top score</span>
+        <span class="cover"><img src="assets/abnb-summary.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">NYU · Intro to Finance</span><h3>Airbnb valuation</h3><p>A free cash flow valuation and HOLD call that earned our professor's highest score ever.</p><span class="foot"><span class="keystat">DCF fair value $136</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="martinez" data-cat="data marketing">
+        <span class="tab">Strategy</span>
+        <span class="cover num"><b>3 personas<br>from the data</b></span>
+        <span class="body"><span class="label">NYU · Data &amp; Digital Storylines</span><h3>Martinez Cocina</h3><p>Who a hot sauce brand should target to grow, for our mock agency's mock client.</p><span class="foot"><span class="keystat">Grow grocery 50%</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="rei" data-cat="marketing data">
+        <span class="tab">Research</span>
+        <span class="cover"><img src="assets/rei-gearup.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">NYU · Consumer Behavior</span><h3>REI &amp; #GearUpAndGo</h3><p>A 60-person survey on why shoppers love REI but buy elsewhere, and a campaign to fix it.</p><span class="foot"><span class="keystat">60 survey responses</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="journi" data-cat="product data">
+        <span class="tab">Pitch</span>
+        <span class="cover"><img src="assets/journi-canvas.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">NYU · Intro to Finance · Solo</span><h3>Journi</h3><p>A Shark Tank-style pitch for an AI travel planner, with a five-year financial model.</p><span class="foot"><span class="keystat">NPV +$966K</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="lasvit" data-cat="product">
+        <span class="tab">Consulting</span>
+        <span class="cover"><img src="assets/lasvit-cells.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">NYU Prague · Leadership</span><h3>Lasvit</h3><p>An org design to help a Czech luxury glass studio scale without losing its creativity.</p><span class="foot"><span class="keystat">Team of 4</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="travelpro" data-cat="product">
+        <span class="tab">Writing</span>
+        <span class="cover"><img src="assets/travelpro.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">NYU · Product Innovation</span><h3>Travelpro review</h3><p>A product critique comparing Travelpro with Away, Béis and Monos.</p><span class="foot"><span class="keystat">4 brands compared</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="breadsync" data-cat="product marketing">
+        <span class="tab">Advising</span>
+        <span class="cover num"><b>500+ users<br>$20K revenue</b></span>
+        <span class="body"><span class="label">Product &amp; UX Advisor · 2026</span><h3>BreadSync</h3><p>UX and product advice for a sports betting tracker, plus its launch press release.</p><span class="foot"><span class="keystat">6 months</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="dina" data-cat="marketing">
+        <span class="tab">Design</span>
+        <span class="cover"><img src="assets/dina-1.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">Campaign design · 2026</span><h3>Dr. Dina for School Board</h3><p>A six-slide Instagram carousel for a school board candidate.</p><span class="foot"><span class="keystat">6-slide carousel</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="ugc" data-cat="marketing">
+        <span class="tab">Research</span>
+        <span class="cover"><img src="assets/content-calbee.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">NYU · New Tech in Ad &amp; PR</span><h3>Influencers to UGC</h3><p>Why brands are shifting to user-generated content, with an Insta360 case study.</p><span class="foot"><span class="keystat">Solo project</span><span class="open">Open →</span></span></span>
+      </button>
+      <button class="folder" type="button" data-open="shoppable" data-cat="marketing">
+        <span class="tab">Campaign</span>
+        <span class="cover"><img src="assets/shop-ritual.jpg" alt="" loading="lazy"></span>
+        <span class="body"><span class="label">NYU · New Tech in Ad &amp; PR</span><h3>Shoppable video</h3><p>How live commerce removes friction, and a mock video-to-checkout campaign.</p><span class="foot"><span class="keystat">Team of 3</span><span class="open">Open →</span></span></span>
+      </button>
+      <p class="empty" hidden>No projects in this category yet.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="content" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">on camera</span>
+        <h2>Content</h2>
+        <p>I film, edit and post short-form video, then read the numbers to learn what worked and why.</p>
+      </div>
+    </div>
+    <div class="content-grid">
+      <div class="feature-video">
+        <div class="vid">
+          <video id="ballet" src="assets/ballet.mp4" poster="assets/ballet.jpg" muted loop playsinline autoplay preload="metadata" aria-label="POV: you took an adult ballet intensive at 28 years old"></video>
+          <span class="vcap">My most-viewed reel</span>
+          <button class="sound" type="button" id="soundBtn" aria-pressed="false">Sound on</button>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>24,043</b><span>views from 17,013 accounts</span></div>
+          <div class="stat"><b>95.3%</b><span>of views from non-followers</span></div>
+          <div class="stat"><b>360</b><span>interactions: 309 likes, 18 saves, 16 comments, 15 shares</span></div>
+        </div>
+      </div>
+      <div class="case-text">
+        <dl class="parts">
+          <div><dt class="label">The question</dt><dd>What gets content in front of people who don't follow me yet?</dd></div>
+          <div><dt class="label">What I did</dt><dd><ul>
+            <li>Filmed and edited product, food, event and dance videos in CapCut and Final Cut Pro.</li>
+            <li>Broke down my own post performance by view source, audience and engagement.</li>
+            <li>As a videographer intern at N2 Dance Studios, filmed and edited class videos to the studio's brand guidelines.</li>
+          </ul></dd></div>
+          <div class="result"><dt class="label">What came of it</dt><dd><ul>
+            <li>The ballet reel reached 24K views, almost all from people who didn't follow me.</li>
+            <li>Another post earned 2.4x my average Reels views.</li>
+            <li>Calbee, a Japanese snack brand, reposted my story to its 23.3K followers.</li>
+          </ul></dd></div>
+        </dl>
+        <div class="mini-links">
+          <button class="btn small" type="button" data-zoom="assets/content-analysis.jpg" data-cap="My content performance analysis">See my performance analysis</button>
+          <a class="btn small" href="https://www.instagram.com/mstiffytea/" target="_blank" rel="noopener">@mstiffytea on Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="reels-head"><span class="label">More videos I've made</span></div>
+    <div class="reels">
+      <div class="reel"><video src="assets/clip-molly.mp4" poster="assets/clip-molly.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Clip from a Molly Tea drink review"></video><span>Molly Tea drink review</span></div>
+      <div class="reel"><video src="assets/clip-hk.mp4" poster="assets/clip-hk.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Clip from a camera unboxing video"></video><span>Camera unboxing</span></div>
+      <div class="reel"><video src="assets/clip-lash.mp4" poster="assets/clip-lash.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Clip from a lash serum tutorial"></video><span>Lash serum tutorial</span></div>
+      <div class="reel"><video src="assets/clip-tulip.mp4" poster="assets/clip-tulip.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Clip from Tulip Day event coverage"></video><span>Tulip Day event</span></div>
+      <div class="reel"><video src="assets/clip-n2.mp4" poster="assets/clip-n2.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Clip from an N2 Dance Studios class video"></video><span>N2 Studios class</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block exp" id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">the path so far</span>
+        <h2>Experience</h2>
+        <p>From clinic floor to marketing team. The common thread is leading the room and keeping things moving.</p>
+      </div>
+    </div>
+    <ol class="tl">
+      <li><div class="card"><span class="when">Dec 2026</span><h4>B.S. Leadership &amp; Business Management</h4><p class="org">NYU School of Professional Studies</p><p>Marketing concentration, GPA 3.82. Coursework includes Consumer Behavior, Data &amp; Digital Storylines, Product Innovation, and a leadership program in Prague.</p></div></li>
+      <li><div class="card"><span class="when">Fall 2026</span><h4>TEDxNYU marketing committee</h4><p class="org">NYU Product Management Club · Real World course: FOX Sports</p><p>Working with a student team on a FOX Sports campaign brief.</p></div></li>
+      <li class="lead"><div class="card"><span class="when">Jul 2026 – now</span><h4>Co-founder &amp; CMO</h4><p class="org">Micro</p><p>Leading user research, brand and pre-launch marketing for an AI productivity app.</p><span class="pin c1"><svg><use href="#pin"/></svg>Co-founder</span></div></li>
+      <li><div class="card"><span class="when">Feb 2026</span><h4>Product &amp; UX Advisor</h4><p class="org">BreadSync</p><p>Advised a sports betting tracker through growth to 500+ users and $20K in revenue.</p></div></li>
+      <li><div class="card"><span class="when">2025 – 2026</span><h4>Short-term rental co-host</h4><p class="org">Legacy Developers</p><p>1+ year of Superhost status, a 4.8/5 rating, 100% response rate and 0% cancellations across Airbnb, Vrbo and more.</p></div></li>
+      <li><div class="card"><span class="when">Feb – May 2025</span><h4>Studio assistant &amp; videographer intern</h4><p class="org">N2 Dance Studios</p><p>Filmed and edited short-form class videos to brand guidelines.</p></div></li>
+      <li><div class="card"><span class="when">Nov 2024 – now</span><h4>Executive Assistant &amp; Transaction Coordinator</h4><p class="org">Christina Mai, REALTOR® (Compass)</p><p>Coordinated 10 transactions to closing, including $10.7M in home sales, and run listing launches from shoot day to broker's open.</p></div></li>
+      <li><div class="card"><span class="when">2023 – 2024</span><h4>REALTOR®</h4><p class="org">eXp Realty, Virginia</p><p>Earned my Virginia real estate license and guided buyers and sellers through their transactions.</p></div></li>
+      <li class="lead"><div class="card"><span class="when">Mar 2021 – now</span><h4>Licensed Veterinary Technician</h4><p class="org">Banfield Pet Hospital, Falls Church (now per diem)</p><p>Cut intake and treatment delays by about 2 hours per shift and managed 10–20 cases a day.</p><span class="pin c2"><svg><use href="#pin"/></svg>Helped lead OSHA training for 30</span></div></li>
+      <li><div class="card"><span class="when">Feb 2021</span><h4>A.S. Veterinary Technology</h4><p class="org">Platt College · Google Digital Marketing &amp; E-commerce Certificate</p><p>Became a Registered Veterinary Technician in California, then moved to Virginia and transferred my license.</p></div></li>
+      <li><div class="card"><span class="when">2017 – 2021</span><h4>Started in veterinary medicine</h4><p class="org">Community Animal Network · clinics across Southern California</p><p>Worked my way from animal rescue intern to receptionist, veterinary assistant and extern while earning my degree.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block about" id="about">
+  <div class="wrap">
+    <div class="prose">
+      <span class="kicker">a little about me</span>
+      <p class="first" style="margin-top:14px">I've been the one organizing the group for as long as I can remember.</p>
+      <p>In high school I was secretary and publicist for the Vietnamese Student Association, and I raised $4,600 to travel through Europe as a People to People Student Ambassador. At NYU I served as recruitment chair for Alpha Kappa Delta Phi. Then I spent nine years in veterinary medicine, where leading meant keeping a team steady through emergencies.</p>
+      <p>Off the clock, I dance. I've been on Level V Origins Dance Team since 2017, and my high school team were USA Nationals finalists. I recently took an adult ballet intensive, which became my most-viewed reel. I've traveled to 15 countries and speak English and Vietnamese.</p>
+      <p><b>How I use AI:</b> it's part of my everyday workflow. Micro is an AI app, Journi was an AI product concept, and I built this site with Claude, directing the strategy, content and design and refining it through conversation.</p>
+    </div>
+    <div class="skills">
+      <div><h4 class="label">Marketing</h4><ul><li>Go-to-market</li><li>Campaign development</li><li>Content strategy</li><li>Social media</li><li>Consumer research</li><li>CRM &amp; email</li><li>Copywriting</li></ul></div>
+      <div><h4 class="label">Product</h4><ul><li>User interviews</li><li>Product discovery</li><li>MVP prioritization</li><li>QA testing</li><li>UX feedback</li><li>Workflow optimization</li></ul></div>
+      <div><h4 class="label">Data &amp; finance</h4><ul><li>Social analytics</li><li>Survey design</li><li>Segmentation</li><li>DCF &amp; valuation</li><li>Financial modeling</li></ul></div>
+      <div><h4 class="label">Tools</h4><ul><li>Brevo</li><li>TestFlight</li><li>Excel</li><li>Google Workspace</li><li>PowerPoint</li><li>Canva</li><li>CapCut</li><li>Final Cut Pro</li><li>WordPress</li><li>Squarespace</li><li>Claude</li><li>ChatGPT</li><li>Gemini</li></ul></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="contact" id="connect">
+  <div class="wrap">
+    <h2>Let's work together.</h2>
+    <p class="sub">I'm looking for marketing, product marketing and product roles and internships for 2027. Open to remote, hybrid, or relocating.</p>
+    <div class="contact-row">
+      <div class="email"><span id="email">tiffanytran2015@gmail.com</span><button class="copy" type="button" id="copyBtn">Copy</button></div>
+      <a class="btn" href="https://www.linkedin.com/in/tiffany-tran2015/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://www.instagram.com/mstiffytea/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="Tiffany_Tran_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>© 2026 Tiffany Tran · Designed and built with Claude</span><span>Open to remote, hybrid &amp; relocation</span></div></footer>
+
+<!-- ===== Project case studies (shown inside the folder dialog) ===== -->
+<div class="src" id="src-micro" data-title="Micro">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">Co-founder &amp; CMO</span><span class="label">Jul 2026 – present</span><span class="label">Remote</span></div>
+      <h3>Micro: an AI coworker, marketed before launch</h3>
+      <p class="summary">Micro is an AI productivity app with a mascot coworker, a pixel office you decorate as you finish tasks, and a tone setting that decides how blunt your reminders get.</p>
+      <dl class="parts">
+        <div><dt class="label">The question</dt><dd>What makes people stick with a productivity app, and how do we build an audience before the app exists?</dd></div>
+        <div><dt class="label">What I did</dt><dd><ul>
+          <li>Ran 12+ one-on-one user interviews and turned recurring pain points into onboarding, messaging and UX changes across 15 TestFlight builds.</li>
+          <li>QA-tested each build and documented friction points for the founder and product designer.</li>
+          <li>Built the landing page and Brevo CRM from scratch.</li>
+          <li>Launched Micro on eight channels (Instagram, TikTok, X, Threads, Discord, YouTube, LinkedIn and Reddit), with positioning written for each one.</li>
+        </ul></dd></div>
+        <div class="result"><dt class="label">What came of it</dt><dd>30 waitlist signups before beta, and a product shaped around what users told us.</dd></div>
+      </dl>
+      <div class="cats"><span class="tag">User research</span><span class="tag">QA testing</span><span class="tag">Go-to-market</span><span class="tag">CRM</span></div>
+    </div>
+    <div class="case-media">
+      <div class="phones">
+        <button class="zoom" type="button" data-cap="Micro home: streaks, coins and the office you decorate"><img src="assets/micro-home.jpg" alt="Micro app home screen with a pixel-art office and mascot" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="Onboarding: pick how your reminders are delivered, from Gentle to Mean"><img src="assets/micro-tone.jpg" alt="Micro onboarding screen offering Gentle, Balanced, Strict and Mean reminder tones" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="Kanban-style project folders"><img src="assets/micro-kanban.jpg" alt="Micro kanban board" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="Chatting with the AI coworker"><img src="assets/micro-chat.jpg" alt="Micro AI chat screen" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-compass" data-title="Listing launch to closing">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">Executive Assistant &amp; Transaction Coordinator</span><span class="label">Christina Mai, REALTOR® · Compass</span><span class="label">Nov 2024 – present</span></div>
+      <h3>From listing launch to closing day</h3>
+      <p class="summary">As executive assistant and transaction coordinator for a luxury real estate agent, I run both halves of a sale: the marketing that brings buyers in, and the contract timeline that gets the deal to the closing table.</p>
+      <dl class="parts">
+        <div><dt class="label">The question</dt><dd>How do you get busy agents to tour a $2.5M home, and then keep every party on schedule once there's a contract?</dd></div>
+        <div><dt class="label">What I did</dt><dd><ul>
+          <li>Designed the broker's open invite for 6600 Reserves Hill Ct around what agents care about: the location, a catered lunch, the home's private golf simulator, and free professional headshots for touring agents.</li>
+          <li>Wrote and designed a two-page features sheet that sorts 40+ selling points into scannable sections.</li>
+          <li>Coordinate photo and video shoots, social content and print pieces so each listing launches on time.</li>
+          <li>Run the full contract timeline from accepted offer to closing, tracking every deadline and keeping agents, clients, lenders, title companies and vendors on schedule.</li>
+          <li>Manage contracts, the CRM and the Google Business Profile, and take on projects independently, including pitching marketing ideas.</li>
+        </ul></dd></div>
+      </dl>
+      <dl class="parts" style="margin-top:18px"><div class="result"><dt class="label">What came of it</dt><dd>Since November 2024, I've coordinated 10 transactions from contract to closing: 7 home sales totaling $10.7M, ranging from $780K to $2.5M, plus 3 leases.</dd></div></dl>
+      <div class="cats"><span class="tag">Campaign launch</span><span class="tag">Copywriting</span><span class="tag">Design</span><span class="tag">Contract management</span><span class="tag">Stakeholder coordination</span></div>
+    </div>
+    <div class="case-media">
+      <div class="grid2">
+        <button class="zoom tall" type="button" data-cap="Broker's open invite, 6600 Reserves Hill Ct"><img src="assets/compass-brokers.jpg" alt="Broker's open flyer for 6600 Reserves Hill Court" loading="lazy"></button>
+        <div style="display:grid;gap:14px">
+          <button class="zoom" type="button" data-cap="Notable features sheet, page 1"><img src="assets/compass-features-1.jpg" alt="Notable features sheet, page one" loading="lazy"></button>
+          <button class="zoom" type="button" data-cap="Notable features sheet, page 2"><img src="assets/compass-features-2.jpg" alt="Notable features sheet, page two" loading="lazy"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-airbnb" data-title="Airbnb valuation">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">NYU · Intro to Finance</span><span class="label">With Cailey Erber</span></div>
+      <span class="award"><svg><use href="#star"/></svg>Highest score our professor has ever given</span>
+      <h3>Airbnb: should you buy at $122?</h3>
+      <p class="summary">An investment recommendation for Airbnb stock, built on a free cash flow valuation and a hard look at the risks most models skip.</p>
+      <dl class="parts">
+        <div><dt class="label">The question</dt><dd>Airbnb is a great business. Is its stock still worth buying at today's price?</dd></div>
+        <div><dt class="label">What we did</dt><dd><ul>
+          <li>Built a five-year free cash flow (FCFF) model, projecting cash flow from $2.72B in 2025 to $4.96B in 2029, and tested how the fair value moves with the discount rate.</li>
+          <li>Checked the DCF against EV/Revenue, EV/EBITDA and P/E multiples and weighted the results.</li>
+          <li>Scored short-term rental regulation risk across NYC, Paris, Spain, Germany and the UK, and assessed upside from the new Instacart partnership.</li>
+        </ul></dd></div>
+        <div class="result"><dt class="label">What came of it</dt><dd>A HOLD call. The DCF showed $136 per share (11.5% upside), but the weighted valuation of $96.20 and regulatory risk meant the price was already fair.</dd></div>
+      </dl>
+      <div class="cats"><span class="tag">Valuation</span><span class="tag">DCF modeling</span><span class="tag">Risk analysis</span></div>
+    </div>
+    <div class="case-media">
+      <button class="zoom" type="button" data-cap="Investment summary and recommendation"><img src="assets/abnb-summary.jpg" alt="Airbnb investment summary slide with HOLD recommendation" loading="lazy"></button>
+      <div class="grid2">
+        <button class="zoom" type="button" data-cap="Valuation across methods"><img src="assets/abnb-valuation.jpg" alt="Valuation table comparing DCF and multiples" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="DCF sensitivity to WACC"><img src="assets/abnb-dcf.jpg" alt="DCF sensitivity chart" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-martinez" data-title="Martinez Cocina">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">NYU · Data &amp; Digital Storylines</span><span class="label">Mock agency Goldman Snacks · team of 5</span><span class="label">Oct 2026</span></div>
+      <h3>Martinez Cocina: three personas, built from the data</h3>
+      <p class="summary">Our class ran as a mock marketing agency, Goldman Snacks. Our mock client, a family-run hot sauce brand newly acquired by Fiesta Todos, needed to know who to target to grow without losing its core customers.</p>
+      <dl class="parts">
+        <div><dt class="label">The question</dt><dd>Which customers can help Martinez grow grocery sales 50% and online sales 25% by 2028?</dd></div>
+        <div><dt class="label">What I did</dt><dd>Worked across the whole report, from the personas to the recommendations. We combined Martinez's customer segments, Fiesta's customer base, social performance data and hot sauce market research into three personas, each with a reason to target and a plan to reach them.</dd></div>
+      </dl>
+      <div class="cats"><span class="tag">Segmentation</span><span class="tag">Personas</span><span class="tag">Data storytelling</span></div>
+    </div>
+    <div class="case-media">
+      <div class="personas">
+        <div class="persona"><div class="pct">53%<small>of Martinez customers</small></div><h4>Valentina, the Latino family cook</h4><p>Overlaps with Fiesta's core shopper (45%), so she's the easiest to grow through grocery.</p><p><b>Reach her:</b> Latin aisle placement, bilingual shelf tags, weekend tastings, recipe content on Pinterest and Facebook.</p></div>
+        <div class="persona"><div class="pct">28%<small>of Martinez buyers</small></div><h4>Jayden, the Gen Z food explorer</h4><p>Instagram already drives 53% of Martinez's online conversions.</p><p><b>Reach him:</b> videos under 15 seconds (a 10-second clip hit 95% completion), creator and athlete collabs, limited drops, gift bundles.</p></div>
+        <div class="persona"><div class="pct">16%<small>of customers</small></div><h4>Mike, the spicy-food sports fan</h4><p>A heavy repeat buyer that Fiesta doesn't serve at all, so he's new revenue.</p><p><b>Reach him:</b> Knicks and game-day partnerships (Knicks videos drew 1M+ impressions each), wing and grilling promos, holiday gift packs.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-rei" data-title="REI &amp; #GearUpAndGo">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">NYU · Consumer Behavior</span><span class="label">Team of 6</span></div>
+      <h3>REI: loved brand, lost sales. Then #GearUpAndGo.</h3>
+      <p class="summary">A consumer behavior study of REI. I led the research method and results, wrote the case for why people shop there, and created the #GearUpAndGo campaign concept.</p>
+      <dl class="parts">
+        <div><dt class="label">The question</dt><dd>REI has strong brand equity. What keeps people from buying there?</dd></div>
+        <div><dt class="label">What I did</dt><dd><ul>
+          <li>Designed a six-section online survey covering shopping behavior, brand awareness, retail experience, perceptions and demographics. Collected 60 responses and flagged the skew toward friends and family.</li>
+          <li>Analyzed the results: brand equity was strong, price was the biggest barrier, and Amazon was the main competitor (75% vs. REI's 35%).</li>
+          <li>Created #GearUpAndGo, which turns REI's once-a-year #OptOutside into a daily push, with nano, micro and macro creators and a membership hook: "Join once for just $30. Adventure for life."</li>
+        </ul></dd></div>
+      </dl>
+      <div class="cats"><span class="tag">Survey design</span><span class="tag">Consumer insights</span><span class="tag">Campaign concept</span></div>
+    </div>
+    <div class="case-media">
+      <button class="zoom" type="button" data-cap="#GearUpAndGo campaign concept"><img src="assets/rei-gearup.jpg" alt="Slide presenting the #GearUpAndGo campaign concept" loading="lazy"></button>
+      <div class="grid2">
+        <button class="zoom" type="button" data-cap="Survey results"><img src="assets/rei-results.jpg" alt="Survey results slide" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="Research methodology"><img src="assets/rei-method.jpg" alt="Research methodology slide" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-journi" data-title="Journi">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">NYU · Intro to Finance</span><span class="label">Solo project</span><span class="label">Dec 2025</span></div>
+      <h3>Journi: pitching an AI travel planner, Shark Tank style</h3>
+      <p class="summary">Journi builds personalized itineraries in seconds and stays free for travelers. Restaurants and attractions pay $828 a year for placement.</p>
+      <dl class="parts">
+        <div><dt class="label">The question</dt><dd>Can a travel app that's free for users make money, and is it worth funding?</dd></div>
+        <div><dt class="label">What I did</dt><dd><ul>
+          <li>Mapped the problem, solution, customers and channels in a lean canvas.</li>
+          <li>Built a five-year financial model in Excel, growing from 150 sponsors in year one to 4,000 in year five.</li>
+          <li>Stress-tested it against slower growth and higher costs, then pitched a $300K ask.</li>
+        </ul></dd></div>
+        <div class="result"><dt class="label">What came of it</dt><dd>A base-case NPV of +$966,693 and an IRR of about 86% at a 20% required return. Every stress scenario stayed NPV-positive.</dd></div>
+      </dl>
+      <div class="cats"><span class="tag">Business model</span><span class="tag">Financial modeling</span><span class="tag">Pitching</span></div>
+    </div>
+    <div class="case-media">
+      <button class="zoom" type="button" data-cap="Journi lean canvas"><img src="assets/journi-canvas.jpg" alt="Journi lean canvas" loading="lazy"></button>
+      <div class="grid2">
+        <button class="zoom" type="button" data-cap="Capital budgeting: NPV and IRR"><img src="assets/journi-npv.jpg" alt="NPV and IRR slide" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="Journi pitch title slide"><img src="assets/journi-title.jpg" alt="Journi title slide" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-lasvit" data-title="Lasvit">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">NYU Prague · Leadership &amp; Management</span><span class="label">MMAT Consulting · team of 4</span></div>
+      <h3>Lasvit: scaling a luxury glass studio</h3>
+      <p class="summary">Lasvit pairs centuries-old Bohemian glassmaking with modern architecture. Our consulting team advised its board on how to grow without losing its creative edge.</p>
+      <dl class="parts">
+        <div><dt class="label">The question</dt><dd>How do you scale a company built on artistry without standardizing the art?</dd></div>
+        <div><dt class="label">What we did</dt><dd><ul>
+          <li>Proposed replacing serial hand-offs with permanent project cells, each co-led by a designer, an engineer and a project manager from day one.</li>
+          <li>Applied transformational and servant leadership, and designed a balanced scorecard that rewards innovation alongside margins.</li>
+          <li>Flagged two risks, the efficiency trap and the loss of master glassblowers, with an apprenticeship pipeline to address the second.</li>
+        </ul></dd></div>
+        <div class="result"><dt class="label">My part</dt><dd>I worked on all of it, from the ideas to the slides.</dd></div>
+      </dl>
+      <div class="cats"><span class="tag">Strategy</span><span class="tag">Org design</span><span class="tag">Leadership</span></div>
+    </div>
+    <div class="case-media">
+      <button class="zoom" type="button" data-cap="The Project Cell Matrix"><img src="assets/lasvit-cells.jpg" alt="Slide showing the Project Cell Matrix" loading="lazy"></button>
+      <button class="zoom" type="button" data-cap="Scaling the Art: deck cover"><img src="assets/lasvit-cover.jpg" alt="Lasvit deck cover, Scaling the Art" loading="lazy"></button>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-travelpro" data-title="Travelpro review">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">NYU · Product Innovation</span><span class="label">Solo</span></div>
+      <h3>Travelpro vs. the trendy hardshells</h3>
+      <p class="summary">A product review written for a Travel + Leisure-style audience, drawing on my own travel to 15 countries.</p>
+      <dl class="parts">
+        <div><dt class="label">The question</dt><dd>Why do pilots choose a 39-year-old luggage brand over the Instagram favorites, and how can that brand catch up on social?</dd></div>
+        <div><dt class="label">What I did</dt><dd><ul>
+          <li>Compared Travelpro's front-opening softside with clamshell hardshells from Away, Béis and Monos on design, weight, price and airline-damage coverage.</li>
+          <li>Interviewed a flight attendant and frequent travelers, and weighed the counterargument for hardshells.</li>
+          <li>Recommended how Travelpro can compete on branding without giving up function.</li>
+        </ul></dd></div>
+      </dl>
+      <div class="cats"><span class="tag">Product critique</span><span class="tag">Competitive analysis</span><span class="tag">Writing</span></div>
+    </div>
+    <div class="case-media">
+      <button class="zoom tall" type="button" data-cap="Travelpro product review, first page"><img src="assets/travelpro.jpg" alt="First page of the Travelpro product review" loading="lazy"></button>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-breadsync" data-title="BreadSync">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">Product &amp; UX Advisor</span><span class="label">Feb 2026</span></div>
+      <h3>BreadSync bet tracker</h3>
+      <p class="summary">BreadSync is a bet-tracking platform for strategic sports bettors.</p>
+      <dl class="parts">
+        <div><dt class="label">What I did</dt><dd><ul>
+          <li>Advised on website structure, UX clarity and product presentation, with ongoing feedback on user-facing decisions.</li>
+          <li>Wrote the launch press release.</li>
+        </ul></dd></div>
+        <div class="result"><dt class="label">What came of it</dt><dd>The platform grew to 500+ users and $20K in revenue within six months, including revenue from a brand partnership.</dd></div>
+      </dl>
+      <div class="cats"><span class="tag">UX feedback</span><span class="tag">PR</span></div>
+    </div>
+    <div class="case-media"></div>
+  </div>
+</div>
+
+<div class="src" id="src-dina" data-title="Dr. Dina for School Board">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">Campaign design</span><span class="label">May 2026</span></div>
+      <h3>Dr. Dina for Freeport School Board</h3>
+      <p class="summary">A six-slide Instagram carousel for a school board candidate.</p>
+      <dl class="parts">
+        <div><dt class="label">What I did</dt><dd>Turned the candidate's platform into four clear themes (academic excellence, real-world readiness, supportive schools and parent voice) with a quote for each, then closed on the vote date and contact details.</dd></div>
+      </dl>
+      <div class="cats"><span class="tag">Social design</span><span class="tag">Messaging</span></div>
+    </div>
+    <div class="case-media">
+      <div class="grid2">
+        <button class="zoom" type="button" data-cap="Slide 1"><img src="assets/dina-1.jpg" alt="Carousel slide 1, candidate introduction" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="Slide 2"><img src="assets/dina-2.jpg" alt="Carousel slide 2, academic excellence" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="Slide 5"><img src="assets/dina-5.jpg" alt="Carousel slide 5, parent voice" loading="lazy"></button>
+        <button class="zoom" type="button" data-cap="Slide 6"><img src="assets/dina-6.jpg" alt="Carousel slide 6, vote date" loading="lazy"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-ugc" data-title="Influencers to UGC">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">NYU · New Tech in Advertising &amp; PR</span><span class="label">Solo</span></div>
+      <h3>From influencers to user-generated content</h3>
+      <p class="summary">Why brands are moving from influencer deals to content made by real customers.</p>
+      <dl class="parts">
+        <div><dt class="label">What I did</dt><dd><ul>
+          <li>Traced influencer marketing from the 1760s to today's oversaturation and consumer fatigue.</li>
+          <li>Compared UGC creators with influencers on cost, creative control and reach.</li>
+          <li>Studied how Insta360 uses customer content, and included my own story that Calbee reposted to 23.3K followers.</li>
+        </ul></dd></div>
+      </dl>
+      <div class="cats"><span class="tag">Research</span><span class="tag">Social strategy</span></div>
+    </div>
+    <div class="case-media">
+      <button class="zoom" type="button" data-cap="My story, reposted by Calbee"><img src="assets/content-calbee.jpg" alt="Slide showing Calbee reposting Tiffany's story" loading="lazy"></button>
+      <button class="zoom" type="button" data-cap="Deck cover"><img src="assets/ugc-title.jpg" alt="UGC deck title slide" loading="lazy"></button>
+    </div>
+  </div>
+</div>
+
+<div class="src" id="src-shoppable" data-title="Shoppable video">
+  <div class="case">
+    <div class="case-text">
+      <div class="meta"><span class="label">NYU · New Tech in Advertising &amp; PR</span><span class="label">Team of 3</span></div>
+      <h3>Shoppable video &amp; live commerce</h3>
+      <p class="summary">How in-video checkout turns scrolling into buying.</p>
+      <dl class="parts">
+        <div><dt class="label">What we did</dt><dd><ul>
+          <li>Analyzed how shoppable video and live commerce remove purchase friction, with market data from McKinsey, HubSpot and TikTok Shop.</li>
+          <li>Studied Sephora's creator storefronts and the SKIMS "Kimsmas" TikTok Live.</li>
+          <li>Developed a mock video-to-checkout campaign for Radical Ritual.</li>
+        </ul></dd></div>
+      </dl>
+      <div class="cats"><span class="tag">E-commerce</span><span class="tag">Campaign concept</span></div>
+    </div>
+    <div class="case-media">
+      <button class="zoom" type="button" data-cap="Radical Ritual mock campaign"><img src="assets/shop-ritual.jpg" alt="Radical Ritual mock campaign slide" loading="lazy"></button>
+      <button class="zoom" type="button" data-cap="Video-to-checkout flow"><img src="assets/shop-mock.jpg" alt="Mock campaign flow from video to checkout" loading="lazy"></button>
+    </div>
+  </div>
+</div>
+
+<dialog class="proj" id="proj" aria-labelledby="projCrumb">
+  <div class="proj-bar">
+    <span class="crumb" id="projCrumb">Project</span>
+    <div class="proj-nav"><button class="iconbtn" type="button" id="projClose">Close ✕</button></div>
+  </div>
+  <div class="proj-body">
+    <div id="projContent"></div>
+    <div class="proj-foot">
+      <button class="iconbtn" type="button" id="projPrev"><small>Previous</small><span></span></button>
+      <button class="iconbtn" type="button" id="projNext"><small>Next</small><span></span></button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="lb" id="lb" aria-label="Enlarged image">
+  <button type="button" id="lbClose">Close ✕</button>
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+</dialog>
+
+<script>
+(function(){
+  var folders=[].slice.call(document.querySelectorAll('.folder'));
+  // filters
+  var chips=document.querySelectorAll('.chip'), empty=document.querySelector('.empty');
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    var f=c.getAttribute('data-filter'), n=0;
+    chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+    folders.forEach(function(el){var show=f==='all'||el.getAttribute('data-cat').split(' ').indexOf(f)>-1;el.hidden=!show;if(show)n++});
+    empty.hidden=n>0;
+  })});
+  // lightbox
+  var lb=document.getElementById('lb'),li=document.getElementById('lbImg'),lc=document.getElementById('lbCap');
+  function zoom(src,alt,cap){li.src=src;li.alt=alt||'';lc.textContent=cap||'';if(lb.showModal)lb.showModal()}
+  document.addEventListener('click',function(e){
+    var z=e.target.closest('button.zoom'); if(z){var img=z.querySelector('img');if(img)zoom(img.currentSrc||img.src,img.alt,z.getAttribute('data-cap'));return}
+    var d=e.target.closest('[data-zoom]'); if(d){zoom(d.getAttribute('data-zoom'),'',d.getAttribute('data-cap'))}
+  });
+  document.getElementById('lbClose').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  // project dialog
+  var dlg=document.getElementById('proj'),box=document.getElementById('projContent'),crumb=document.getElementById('projCrumb');
+  var prev=document.getElementById('projPrev'),next=document.getElementById('projNext'),cur=-1;
+  function visible(){return folders.filter(function(f){return !f.hidden})}
+  function titleOf(f){var s=document.getElementById('src-'+f.getAttribute('data-open'));return s?s.getAttribute('data-title'):''}
+  function openProj(id){
+    var src=document.getElementById('src-'+id); if(!src)return;
+    box.innerHTML=src.innerHTML; crumb.textContent=src.getAttribute('data-title');
+    var list=visible(); cur=list.findIndex(function(f){return f.getAttribute('data-open')===id});
+    if(cur<0){list=folders;cur=folders.findIndex(function(f){return f.getAttribute('data-open')===id})}
+    var p=list[(cur-1+list.length)%list.length], n=list[(cur+1)%list.length];
+    prev.dataset.go=p.getAttribute('data-open'); prev.querySelector('span').textContent='← '+titleOf(p);
+    next.dataset.go=n.getAttribute('data-open'); next.querySelector('span').textContent=titleOf(n)+' →';
+    if(!dlg.open&&dlg.showModal){dlg.showModal();document.body.classList.add('locked')}
+    dlg.scrollTop=0;
+    try{history.replaceState(null,'','#'+id)}catch(e){}
+  }
+  folders.forEach(function(f){f.addEventListener('click',function(){openProj(f.getAttribute('data-open'))})});
+  prev.addEventListener('click',function(){openProj(prev.dataset.go)});
+  next.addEventListener('click',function(){openProj(next.dataset.go)});
+  function closeProj(){if(dlg.open)dlg.close()}
+  document.getElementById('projClose').addEventListener('click',closeProj);
+  dlg.addEventListener('click',function(e){if(e.target===dlg)closeProj()});
+  dlg.addEventListener('close',function(){document.body.classList.remove('locked');try{history.replaceState(null,'','#projects')}catch(e){}});
+  var h=(location.hash||'').slice(1); if(h&&document.getElementById('src-'+h))openProj(h);
+  // active tab
+  var links=[].slice.call(document.querySelectorAll('.tablist a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function setActive(){
+    var y=window.scrollY+110,c=null;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y)c=i});
+    if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)c=secs.length-1;
+    links.forEach(function(a,i){a.setAttribute('aria-current',i===c?'true':'false')});
+  }
+  window.addEventListener('scroll',setActive,{passive:true});setActive();
+  // ballet sound
+  var v=document.getElementById('ballet'),sb=document.getElementById('soundBtn');
+  sb.addEventListener('click',function(){
+    v.muted=!v.muted;if(!v.muted){v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){})}
+    sb.textContent=v.muted?'Sound on':'Sound off';sb.setAttribute('aria-pressed',String(!v.muted));
+  });
+  // copy
+  var cb=document.getElementById('copyBtn'),em=document.getElementById('email');
+  cb.addEventListener('click',function(){
+    function done(){cb.textContent='Copied';setTimeout(function(){cb.textContent='Copy'},1800)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(em);var s=window.getSelection();s.removeAllRanges();s.addRange(r);cb.textContent='Selected'}
+    try{navigator.clipboard.writeText(em.textContent).then(done,fallback)}catch(e){fallback()}
+  });
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video[autoplay]').forEach(function(x){x.removeAttribute('autoplay');x.pause()});
+  }
+})();
+</script>
